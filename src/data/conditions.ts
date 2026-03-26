@@ -49,43 +49,40 @@ export const CONDITIONS_DATA: ConditionProtocol[] = [
   {
     id: 'thyroid-storm',
     name: 'Thyroid Storm',
-    category: 'Endocrine > Metabolic',
+    category: 'Endocrine > Emergency',
     severity: 'critical',
     diagnosis: [
-      'Hyperpyrexia (>38.5°C)',
-      'Tachycardia (often >140 bpm) / Atrial Fibrillation',
-      'CNS Dysfunction (Agitation, Delirium, Coma)',
-      'GI-Hepatic Dysfunction (Jaundice, Nausea/Vomiting)'
+      'Burch-Wartofsky Score > 45 (Highly suggestive)',
+      'Hyperthermia, Tachycardia (out of proportion to fever), Agitation/Delirium',
+      'High T3/T4, Low TSH (though diagnosis is clinical)'
     ],
     immediateActions: [
-      'Beta-Blockade: Propranolol 60-80mg PO q4h or Esmolol IV',
-      'Thionamides: PTU 200mg q4h or Methimazole 20mg q4h',
-      'Iodine: Lugol\'s solution (start 1hr AFTER thionamides)',
-      'Steroids: Hydrocortisone 100mg IV q8h (or Dexamethasone 2-4mg q6h)'
+      'Beta-blockade: Propranolol (blocks T4 to T3 conversion) or Esmolol',
+      'Thionamides: PTU (preferred) or Methimazole (blocks new hormone synthesis)',
+      'Iodine (Lugol\'s solution): Give 1h AFTER thionamides (Wolff-Chaikoff effect)',
+      'Steroids: Hydrocortisone 100mg IV q8h (blocks T4 to T3 conversion)'
     ],
     secondaryManagement: [
-      'Cooling measures (Paracetamol, cooling blankets)',
-      'Identify and treat precipitating cause (Infection, Surgery)',
-      'Plasmapheresis if refractory'
+      'Cooling measures (avoid aspirin as it displaces T4 from TBG)',
+      'Treat precipitating cause (Infection, Surgery, Trauma, Iodine load)',
+      'Plasmapheresis (if refractory)'
     ],
     ivFluidManagement: {
-      choices: ['0.9% Sodium Chloride', 'Balanced Crystalloids'],
-      targets: ['Euvolemia', 'Correction of dehydration from hyperpyrexia', 'Maintain MAP > 65'],
-      monitoring: ['Strict fluid balance', 'Hourly temperature', 'Continuous ECG (for arrhythmias)']
+      choices: ['Normal Saline with 5% Dextrose (to replenish glycogen)', 'Aggressive fluid replacement'],
+      targets: ['Correct dehydration', 'Maintain MAP > 65 mmHg', 'Urine output > 0.5 mL/kg/hr'],
+      monitoring: ['Core temperature', 'Heart rate/rhythm (AF common)', 'Serum electrolytes']
     },
     diagram: [
-      { title: 'Beta-Blocker', description: 'Control HR and block peripheral T4->T3 conversion (Propranolol 60-80mg PO q4h or Esmolol IV 50-100 mcg/kg/min). Target HR < 100 bpm.', type: 'action' },
-      { title: 'Thionamide', description: 'Block synthesis (PTU 200mg q4h or Methimazole 20mg q4h). PTU preferred in crisis as it also blocks T4->T3 conversion.', type: 'action' },
-      { title: 'Wait 1 Hour', description: 'Crucial 1-hour delay before iodine administration to prevent using iodine as substrate for new hormone synthesis (Wolff-Chaikoff effect).', type: 'warning' },
-      { title: 'Iodine / Steroids', description: 'Lugol\'s solution (10 drops q8h) + Hydrocortisone (100mg IV q8h) to block release and peripheral conversion. Dexamethasone 2-4mg q6h is an alternative.', type: 'action' },
-      { title: 'Supportive Care', description: 'Aggressive cooling (ice packs, cooling blankets), Paracetamol (avoid Aspirin as it displaces T4 from TBG), and IV fluids.', type: 'info' }
+      { title: 'Clinical Diagnosis', description: 'Do not wait for labs. Use Burch-Wartofsky criteria (Temp, HR, CNS, GI, CHF).', type: 'info' },
+      { title: 'Step 1: Beta-block', description: 'Propranolol 60-80mg PO q4h or Esmolol infusion. Controls adrenergic symptoms.', type: 'action' },
+      { title: 'Step 2: Thionamide', description: 'PTU 200mg q4h. Blocks synthesis AND peripheral conversion of T4 to T3.', type: 'action' },
+      { title: 'Step 3: Iodine', description: 'Lugol\'s solution 5-10 drops q8h. MUST wait 1h after PTU to prevent "Jod-Basedow" effect.', type: 'warning' },
+      { title: 'Step 4: Steroids', description: 'Hydrocortisone 100mg IV q8h. Treats relative adrenal insufficiency and blocks T4 conversion.', type: 'action' }
     ],
     normalLabRanges: {
       'TSH': '0.4 - 4.0 mIU/L',
-      'Free T4': '9 - 25 pmol/L',
-      'Free T3': '3.5 - 7.8 pmol/L',
-      'Temperature': '36.5 - 37.5 °C',
-      'Heart Rate': '60 - 100 bpm'
+      'Free T4': '12 - 22 pmol/L',
+      'Temperature': '< 37.5 C'
     }
   },
   {
@@ -450,38 +447,37 @@ export const CONDITIONS_DATA: ConditionProtocol[] = [
     category: 'Neurological > Emergency',
     severity: 'critical',
     diagnosis: [
-      'Seizure duration > 5 mins',
-      'Two or more seizures without recovery in between',
-      'Non-convulsive status (requires EEG)'
+      'Seizure lasting > 5 minutes (T1)',
+      'Two or more seizures without full recovery of consciousness',
+      'Non-convulsive status (requires EEG diagnosis)'
     ],
     immediateActions: [
-      'Airway/O2: Protect airway, suction',
-      'Benzodiazepines: Lorazepam 4mg IV or Midazolam 10mg IM',
-      'Repeat Benzo after 5-10 mins if still seizing',
-      'IV Anticonvulsants: Levetiracetam, Phenytoin, or Valproate'
+      'ABC: Airway protection, high-flow O2, check glucose',
+      'First-line: Benzodiazepines (Lorazepam 4mg IV or Midazolam 10mg IM)',
+      'Second-line: Phenytoin (20mg/kg), Levetiracetam (60mg/kg), or Valproate (40mg/kg)',
+      'Third-line: General Anesthesia (Propofol, Midazolam, or Thiopental)'
     ],
     secondaryManagement: [
-      'General Anesthesia (Propofol/Thiopental) if refractory',
-      'Continuous EEG monitoring',
-      'Identify cause (Meds, Metabolic, Stroke, Infection)'
+      'EEG monitoring (continuous if possible)',
+      'Identify underlying cause (Infection, Stroke, Metabolic, Drug withdrawal)',
+      'Neuro-imaging (CT/MRI)'
     ],
     ivFluidManagement: {
-      choices: ['0.9% Sodium Chloride', 'Avoid Hypotonic fluids (prevent cerebral edema)'],
-      targets: ['Euvolemia', 'Normal Serum Sodium', 'MAP > 65 mmHg'],
-      monitoring: ['Serum electrolytes (Na+, Mg2+, Ca2+)', 'Fluid balance', 'Invasive BP (if on infusions)']
+      choices: ['Normal Saline', 'Avoid hypotonic fluids'],
+      targets: ['Maintain MAP > 65 mmHg', 'Avoid cerebral edema', 'Euvolemia'],
+      monitoring: ['Invasive BP (if on GA)', 'Serum electrolytes', 'Glucose']
     },
     diagram: [
-      { title: '0-5 Mins', description: 'ABC, 100% O2, Glucose check (treat if <3.9), IV access. Position to prevent aspiration and injury.', type: 'action' },
-      { title: '5-20 Mins', description: 'Lorazepam 4mg IV (slow bolus) or Midazolam 10mg IM. Repeat once after 5 mins if seizure continues.', type: 'action' },
-      { title: '20-40 Mins', description: 'Levetiracetam 60mg/kg (max 4.5g), Phenytoin 20mg/kg (monitor ECG/BP), or Valproate 40mg/kg IV.', type: 'action' },
-      { title: 'Refractory', description: 'Intubate + Propofol (2-5mg/kg/hr) or Midazolam infusion. Titrate to burst suppression or seizure cessation on EEG.', type: 'warning' },
-      { title: 'Identify Cause', description: 'Urgent CT Brain, LP (if fever), and metabolic screen (Na, Ca, Mg, Tox). Start EEG as soon as possible.', type: 'info' }
+      { title: 'Time is Brain', description: 'T1 (5 min): Start treatment. T2 (30 min): Risk of permanent neuronal injury.', type: 'warning' },
+      { title: 'Initial Phase', description: 'Lorazepam 4mg IV (repeat once if needed). If no IV access: Midazolam 10mg IM.', type: 'action' },
+      { title: 'Second Phase', description: 'Levetiracetam (60mg/kg, max 4.5g) or Phenytoin (20mg/kg, max 2g). Infuse over 15-20 mins.', type: 'action' },
+      { title: 'Refractory Phase', description: 'If seizures continue > 30-60 mins, intubate and start Propofol or Midazolam infusion.', type: 'warning' },
+      { title: 'EEG Goal', description: 'Burst suppression or complete seizure control on EEG. Monitor for 24-48h.', type: 'info' }
     ],
     normalLabRanges: {
-      'Blood Glucose': '4.0 - 7.0 mmol/L',
+      'Glucose': '4.0 - 7.0 mmol/L',
       'Sodium': '135 - 145 mmol/L',
-      'Magnesium': '0.7 - 1.0 mmol/L',
-      'Calcium (Ionized)': '1.1 - 1.3 mmol/L'
+      'Phenytoin Level': '10 - 20 mg/L'
     }
   },
   {
@@ -2086,42 +2082,79 @@ export const CONDITIONS_DATA: ConditionProtocol[] = [
   {
     id: 'myxedema-coma',
     name: 'Myxedema Coma',
-    category: 'Endocrine > Metabolic',
+    category: 'Endocrine > Emergency',
     severity: 'critical',
     diagnosis: [
-      'Hypothermia',
-      'Bradycardia',
-      'Altered mental status / Coma',
-      'Hypoventilation',
-      'Hyponatremia',
-      'Hypoglycemia'
+      'Altered mental status (Coma/Lethargy)',
+      'Hypothermia (often < 35 C), Bradycardia, Hypoventilation',
+      'Hyponatremia, Hypoglycemia, High TSH, Low T4'
     ],
     immediateActions: [
-      'IV Levothyroxine (T4) 200-400 mcg loading',
-      'IV Hydrocortisone 100mg q8h (before T4)',
-      'Passive rewarming',
-      'Supportive ventilation'
+      'Thyroid replacement: Levothyroxine (T4) 200-400mcg IV bolus, then 50-100mcg daily',
+      'Liothyronine (T3): Consider 5-20mcg IV bolus (faster onset, risk of arrhythmia)',
+      'Steroids: Hydrocortisone 100mg IV q8h (must give BEFORE thyroid to avoid adrenal crisis)',
+      'Supportive: Passive rewarming, mechanical ventilation if needed'
     ],
     secondaryManagement: [
-      'Fluid restriction for hyponatremia',
-      'Treat precipitating cause (Infection, MI, Cold)',
-      'IV Liothyronine (T3) 5-20 mcg (optional)'
+      'Treat precipitating cause (Cold exposure, Infection, MI, Sedatives)',
+      'Fluid resuscitation (cautious due to risk of hyponatremia/CHF)',
+      'Monitor for arrhythmias'
     ],
     ivFluidManagement: {
-      choices: ['0.9% Sodium Chloride (cautious)', '5% Dextrose (if hypoglycemic)'],
-      targets: ['Euvolemia', 'Correction of hyponatremia', 'Maintain MAP > 65'],
-      monitoring: ['Strict fluid balance', 'Core temperature', 'Serum Na+ and Glucose']
+      choices: ['Normal Saline (if hyponatremic)', 'Avoid excessive free water'],
+      targets: ['Correct hyponatremia slowly', 'Maintain MAP > 65 mmHg', 'Euvolemia'],
+      monitoring: ['Core temperature', 'Serum Sodium', 'Thyroid function tests']
     },
     diagram: [
-      { title: 'Recognition', description: 'Severe hypothyroidism + Altered mental status + Hypothermia. Often precipitated by infection or cold exposure.', type: 'decision' },
-      { title: 'Steroids First', description: 'Give Hydrocortisone 100mg IV immediately to treat potential co-existing adrenal insufficiency and avoid crisis when T4 is given.', type: 'warning' },
-      { title: 'Thyroid Hormone', description: 'Levothyroxine (T4) 200-400 mcg IV loading, then 50-100 mcg daily. Consider T3 if no improvement.', type: 'action' },
-      { title: 'Supportive Care', description: 'Passive rewarming (blankets). Active rewarming may cause vasodilation and shock. Treat hypoglycemia and hyponatremia.', type: 'info' }
+      { title: 'Classic Triad', description: 'Altered mental status + Hypothermia + Precipitating event.', type: 'info' },
+      { title: 'Steroids First', description: 'Hydrocortisone 100mg IV. Thyroid hormone increases metabolism and can trigger adrenal crisis.', type: 'warning' },
+      { title: 'Thyroid Loading', description: 'T4 200-400mcg IV. T3 is controversial but may be added in severe cases.', type: 'action' },
+      { title: 'Rewarming', description: 'Passive rewarming only (blankets). Active rewarming can cause vasodilation and shock.', type: 'warning' },
+      { title: 'Ventilation', description: 'High risk of hypercapnic respiratory failure due to decreased drive and macroglossia.', type: 'info' }
     ],
     normalLabRanges: {
-      'TSH': '> 10 mIU/L (usually)',
-      'Free T4': 'Very low',
-      'Temperature': '> 35.0 °C (target)'
+      'TSH': '0.4 - 4.0 mIU/L',
+      'Free T4': '12 - 22 pmol/L',
+      'Sodium': '135 - 145 mmol/L'
+    }
+  },
+  {
+    id: 'pheochromocytoma-crisis',
+    name: 'Pheochromocytoma Crisis',
+    category: 'Endocrine > Emergency',
+    severity: 'critical',
+    diagnosis: [
+      'Classic Triad: Headache, Sweating, Palpitations',
+      'Severe Hypertension (often paroxysmal), Tachycardia',
+      'Elevated plasma/urine metanephrines'
+    ],
+    immediateActions: [
+      'Alpha-blockade FIRST: Phentolamine (IV) or Phenoxybenzamine (PO)',
+      'Beta-blockade SECOND: Only AFTER adequate alpha-blockade (to avoid unopposed alpha)',
+      'Vasodilators: Sodium Nitroprusside or Nicardipine for hypertensive crisis',
+      'Volume expansion: Patients are often severely volume depleted'
+    ],
+    secondaryManagement: [
+      'Surgical resection (once stable and alpha-blocked for 10-14 days)',
+      'Localization (CT/MRI/MIBG scan)',
+      'Long-term BP management'
+    ],
+    ivFluidManagement: {
+      choices: ['Normal Saline', 'Aggressive volume expansion'],
+      targets: ['Restore intravascular volume', 'Counteract vasoconstriction', 'Maintain MAP'],
+      monitoring: ['Invasive arterial BP', 'CVP/Stroke Volume Variation', 'Urine output']
+    },
+    diagram: [
+      { title: 'Alpha Before Beta', description: 'NEVER give beta-blockers first. Unopposed alpha-stimulation can cause catastrophic hypertension.', type: 'warning' },
+      { title: 'Acute Control', description: 'Phentolamine 1-5mg IV boluses or Nitroprusside infusion. Aim for rapid but controlled reduction.', type: 'action' },
+      { title: 'Volume Loading', description: 'Start NS early. Alpha-blockade causes vasodilation in a volume-depleted system, leading to shock.', type: 'warning' },
+      { title: 'Pre-op Prep', description: 'Phenoxybenzamine 10mg BID, titrated. Goal: BP < 130/80 and orthostatic hypotension.', type: 'info' },
+      { title: 'Intra-op Risk', description: 'Extreme BP swings during tumor manipulation. Requires rapid-acting vasodilators and vasopressors.', type: 'info' }
+    ],
+    normalLabRanges: {
+      'Plasma Metanephrines': '< 0.5 nmol/L',
+      'Plasma Normetanephrines': '< 0.9 nmol/L',
+      'Systolic BP': '< 140 mmHg'
     }
   },
   {
@@ -2886,5 +2919,5 @@ export const CONDITIONS_DATA: ConditionProtocol[] = [
       'Diastolic BP': '< 90 mmHg',
       'Creatinine': '60 - 110 umol/L'
     }
-  }
+  },
 ];

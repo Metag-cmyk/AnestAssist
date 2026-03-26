@@ -127,5 +127,85 @@ export const STATIC_GUIDELINES: StaticGuideline[] = [
     year: 2023,
     category: 'Obstetrics',
     summary: 'Consensus statement on the multidisciplinary management of PAS. Recommends specialized centers, preoperative planning, and strategies for massive transfusion and hemorrhage control.'
+  },
+  {
+    id: 'esicm-ards-nuances-2024',
+    title: 'ARDS Management: Nuances and Phenotypes',
+    source: 'ESICM',
+    year: 2024,
+    category: 'ICU',
+    summary: 'Focuses on sub-phenotyping ARDS (Hyper-inflammatory vs. Hypo-inflammatory) to tailor PEEP and fluid strategies. Emphasizes driving pressure-limited ventilation (<15 cmH2O) and early consideration of ECMO in "non-responders" to prone positioning.'
+  },
+  {
+    id: 'ssc-sepsis-update-2026',
+    title: 'Sepsis Management: 2026 Focused Update',
+    source: 'ESICM',
+    year: 2026,
+    category: 'ICU',
+    summary: 'Updates on the "Hour-1 Bundle". Recommends capillary refill time (CRT) as a primary target for resuscitation. Highlights the role of Vitamin C/Thiamine as "not recommended" and clarifies the use of Angiotensin II in refractory shock.'
+  },
+  {
+    id: 'esc-cardiogenic-shock-2024',
+    title: 'Management of Cardiogenic Shock',
+    source: 'ESAIC',
+    year: 2024,
+    category: 'ICU',
+    summary: 'Comprehensive algorithm for cardiogenic shock. Recommends early revascularization, cautious use of inotropes (Dobutamine first-line), and early multidisciplinary "Shock Team" activation for mechanical circulatory support (MCS) decisions.'
+  },
+  {
+    id: 'esicm-obstructive-shock-2023',
+    title: 'Management of Obstructive Shock States',
+    source: 'ESICM',
+    year: 2023,
+    category: 'ICU',
+    summary: 'Guidelines for Tension Pneumothorax, Cardiac Tamponade, and Massive PE. Emphasizes rapid point-of-care ultrasound (POCUS) for diagnosis and immediate procedural intervention (decompression/drainage/thrombolysis) as the primary treatment.'
+  },
+  {
+    id: 'esicm-neurogenic-shock-2024',
+    title: 'Management of Neurogenic Shock',
+    source: 'ESICM',
+    year: 2024,
+    category: 'ICU',
+    summary: 'Focuses on maintaining spinal cord perfusion (MAP 85-90 mmHg for 7 days). Recommends early vasopressors (Norepinephrine or Dopamine) and atropine for bradycardia. Emphasizes the importance of differentiating from hypovolemic shock in trauma patients.'
+  },
+  {
+    id: 'esaic-anaphylaxis-2023',
+    title: 'Management of Perioperative Anaphylaxis',
+    source: 'ESAIC',
+    year: 2023,
+    category: 'Intra-op',
+    summary: 'Strong recommendation for early Adrenaline (IM or IV bolus/infusion). Recommends aggressive fluid resuscitation (20-50 mL/kg), bronchodilators for refractory bronchospasm, and tryptase sampling (1-2h and 24h post-event).'
+  },
+  {
+    id: 'esicm-trauma-shock-2023',
+    title: 'Management of Hypovolemic Shock in Trauma',
+    source: 'ESICM',
+    year: 2023,
+    category: 'ICU',
+    summary: 'Emphasizes "Permissive Hypotension" (MAP 50-60 mmHg) until surgical control. Recommends early 1:1:1 blood product ratio, TXA within 3h, and maintaining normothermia and calcium levels (>1.1 mmol/L).'
+  },
+  {
+    id: 'esicm-obesity-vent-2024',
+    title: 'Mechanical Ventilation in the Obese Patient',
+    source: 'ESICM',
+    year: 2024,
+    category: 'ICU',
+    summary: 'Recommends higher PEEP (often >10 cmH2O) to counteract pleural pressure, recruitment maneuvers, and prone positioning. Emphasizes using Ideal Body Weight (IBW) for tidal volume calculation (6 mL/kg IBW).'
+  },
+  {
+    id: 'esicm-copd-vent-2023',
+    title: 'Ventilation in Obstructive Lung Disease (COPD/Asthma)',
+    source: 'ESICM',
+    year: 2023,
+    category: 'ICU',
+    summary: 'Focuses on minimizing dynamic hyperinflation (Auto-PEEP). Recommends low respiratory rates, long expiratory times (I:E 1:3 or 1:4), and permissive hypercapnia. Emphasizes monitoring plateau and peak-to-plateau pressures.'
+  },
+  {
+    id: 'esaic-right-heart-2024',
+    title: 'Management of Right Heart Failure in ICU',
+    source: 'ESAIC',
+    year: 2024,
+    category: 'ICU',
+    summary: 'Focuses on optimizing RV preload (often restrictive), reducing RV afterload (pulmonary vasodilators like iNO), and maintaining RV perfusion (MAP > PAP). Recommends Dobutamine or Milrinone for RV inotropy.'
   }
 ];
